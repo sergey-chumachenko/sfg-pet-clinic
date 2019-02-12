@@ -1,12 +1,15 @@
 package org.springguru.chumick.sfgpetclinick.service.map;
 
+import org.springframework.stereotype.Service;
 import org.springguru.chumick.sfgpetclinick.model.Owner;
 import org.springguru.chumick.sfgpetclinick.service.CrudService;
+import org.springguru.chumick.sfgpetclinick.service.OwnerService;
 
 import java.util.Set;
 import java.util.function.Predicate;
 
-public class OwnerServiceMap extends AbstractMapSerive<Owner, Long> implements CrudService<Owner, Long> {
+@Service
+public class OwnerServiceMap extends AbstractMapSerive<Owner, Long> implements OwnerService {
     @Override
     public Owner save(Owner owner) {
         return super.save(owner.getId(), owner);
