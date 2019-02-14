@@ -1,11 +1,22 @@
 package org.springguru.chumick.sfgpetclinick.model;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
+@Entity
 public class Pet extends BaseEntity {
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "type_id")
     private PetType petType;
+
+    @ManyToOne
+    @JoinColumn(name="owner_id")
     private Owner owner;
+
     private LocalDate birthDay;
 
     public String getName() {
