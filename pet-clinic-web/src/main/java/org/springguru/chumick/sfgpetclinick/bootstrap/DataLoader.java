@@ -3,10 +3,7 @@ package org.springguru.chumick.sfgpetclinick.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springguru.chumick.sfgpetclinick.model.*;
-import org.springguru.chumick.sfgpetclinick.service.OwnerService;
-import org.springguru.chumick.sfgpetclinick.service.PetTypeService;
-import org.springguru.chumick.sfgpetclinick.service.SpecialityService;
-import org.springguru.chumick.sfgpetclinick.service.VetService;
+import org.springguru.chumick.sfgpetclinick.service.*;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -17,12 +14,14 @@ public class DataLoader implements CommandLineRunner {
     private final PetTypeService petTypeService;
     private final VetService vetService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, PetTypeService petTypeService, VetService vetService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService, PetTypeService petTypeService, VetService vetService, SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.petTypeService = petTypeService;
         this.vetService = vetService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -73,6 +72,12 @@ public class DataLoader implements CommandLineRunner {
         vet1.setLastName("vet1 last name");
         vet1.getSpecialities().add(radiology);
         vetService.save(vet1);
+
+        Visit visit1 = new Visit();
+        visit1.setDate(LocalDate.now());
+        visit1.setPet(pet1);
+        visit1.setDescription("qqqq");
+        visitService.save(visit1);
 
         Vet vet2 = new Vet();
         vet2.setFirstName("vet2 first name");
