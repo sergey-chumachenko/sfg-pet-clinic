@@ -1,5 +1,6 @@
 package org.springguru.chumick.sfgpetclinick.service.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springguru.chumick.sfgpetclinick.model.Visit;
 import org.springguru.chumick.sfgpetclinick.service.VisitService;
@@ -7,6 +8,7 @@ import org.springguru.chumick.sfgpetclinick.service.VisitService;
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class VisitMapService extends AbstractMapSerive<Visit, Long> implements VisitService {
 
     @Override

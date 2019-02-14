@@ -1,5 +1,6 @@
 package org.springguru.chumick.sfgpetclinick.service.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springguru.chumick.sfgpetclinick.model.Speciality;
 import org.springguru.chumick.sfgpetclinick.model.Speciality;
@@ -9,6 +10,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 @Service
+@Profile({"default", "map"})
 public class SpecialityMapService extends AbstractMapSerive<Speciality, Long> implements SpecialityService {
     @Override
     public Speciality save(Speciality object) {
