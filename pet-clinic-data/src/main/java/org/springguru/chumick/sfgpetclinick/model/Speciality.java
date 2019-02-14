@@ -1,5 +1,8 @@
 package org.springguru.chumick.sfgpetclinick.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Speciality extends BaseEntity {
     private String description;
 
