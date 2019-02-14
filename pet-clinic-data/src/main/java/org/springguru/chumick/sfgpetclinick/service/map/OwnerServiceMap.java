@@ -7,6 +7,7 @@ import org.springguru.chumick.sfgpetclinick.service.OwnerService;
 import org.springguru.chumick.sfgpetclinick.service.PetService;
 import org.springguru.chumick.sfgpetclinick.service.PetTypeService;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.Predicate;
 
@@ -67,5 +68,11 @@ public class OwnerServiceMap extends AbstractMapSerive<Owner, Long> implements O
     @Override
     public void deleteById(Long id) {
         super.deleteById(id);
+    }
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        return findBy(o -> Objects.equals(o.getLastName(), lastName))
+            .stream().findFirst().orElse(null);
     }
 }

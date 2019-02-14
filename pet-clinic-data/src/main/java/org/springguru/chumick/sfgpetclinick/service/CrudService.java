@@ -6,7 +6,6 @@ import java.util.function.Predicate;
 public interface CrudService<T, ID> {
     T save(T owner);
 
-    Set<T> findBy(Predicate<T> ownerPredicate);
     T findById(ID id);
     Set<T> findAll();
 
